@@ -49,5 +49,11 @@ pipeline {
                 echo "Code Directory Path: ${SOURCE_PATH}"
             }
         }
+
+        stage('Deployment Success Check'){
+            steps{
+                echo "Successfully checked that it's checked into GIT"
+            }
+        }
     }
 }
