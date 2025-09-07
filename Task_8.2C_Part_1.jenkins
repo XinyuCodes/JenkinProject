@@ -16,7 +16,7 @@ pipeline {
             }
         }
         
-        stage("Unit Testing") {
+        stage("Unit and Integration Tests") {
             steps {
                 echo "Unit tests"
                 echo "This step executes automated unit test to verify individual components"
@@ -24,7 +24,7 @@ pipeline {
             }
         }
         
-        stage("Code Quality Analysis") {
+        stage("Code Analysis") {
             steps {
                 echo "Check the quality of the code and identifies for any quality issues, bugs and security vulnerabilities"
                 echo "Tools used includes SonarQube or PMD"
@@ -39,6 +39,14 @@ pipeline {
                 echo "Purpose here is to identify security issues in third-party libraries and application code"
             }
         }
+
+        stage("Deployment to Staging") {
+            steps {
+                // Display success messages
+                echo "Deploys the application to a pre-production environment and runs smoke tests to check that the deployment was successful"
+                echo "Tools used here includes Docket + kubernetes"
+            }
+        }
         
         stage("Integration Testing") {
             steps {
@@ -47,17 +55,12 @@ pipeline {
             }
         }
         
-        stage("Artifact Storage") {
-            steps {
-                // Display success messages
-                echo "Store build artifact in a centralised repository"
-                echo "Tools used here includes Nexus Repository Manager or JFrog Artifactory"
-            }
-        }
 
-        stage("Deployment"){
+
+        stage("Deployment to Production"){
             steps{
-                echo "Deploy application to target envronment"
+                echo "Deploy application to target production envronment"
+                echo "Similar to deployment to staging, we use Docker + Kubernetes here for containerized applications. However, for Cloud enviropnment, we would use AWS CodeDeploy/Azure DevOps/Google Cloud Deploy"
                 
         }
     }
