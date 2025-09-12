@@ -1,0 +1,68 @@
+pipeline {
+    agent any
+    
+    environment {
+        SOURCE_PATH = "/Document/Jenkins/Code"
+        TEST_ENV = "SIT"
+        PROD_ENV = "XINYU"
+    }
+    
+    stages {
+        stage("Build") {
+            steps {
+                echo "Fetch the source code from the directory path specified by the environment variable: ${SOURCE_PATH}"
+                echo "Compile the code and generate any necessary artefacts"
+                echo "This step downloads dependencies, compiles source code and create any JAR/WAR files using tools like Maven"
+            }
+        }
+        
+        stage("Unit and Integration Tests") {
+            steps {
+                echo "Unit tests"
+                echo "This step executes automated unit test to verify individual components"
+                echo "Tools used here includes JUnit (Java), pytest (Python) or Jes (Javascript)"
+            }
+        }
+        
+        stage("Code Analysis") {
+            steps {
+                echo "Check the quality of the code and identifies for any quality issues, bugs and security vulnerabilities"
+                echo "Tools used includes SonarQube or PMD"
+                echo "This step is very important in analysing static code and generates quality gates reports"
+            }
+        }
+        
+        stage("Security Scanning") {
+            steps {
+                echo "Scans dependencies and code for known security vulnerabilities"
+                echo "Tools used in this step can include OWASP or Snyk"
+                echo "Purpose here is to identify security issues in third-party libraries and application code"
+            }
+        }
+
+        stage("Deployment to Staging") {
+            steps {
+                // Display success messages
+                echo "Deploys the application to a pre-production environment and runs smoke tests to check that the deployment was successful"
+                echo "Tools used here includes Docket + kubernetes"
+            }
+        }
+        
+        stage("Integration Testing") {
+            steps {
+                echo "Runs integration test to verify component interation"
+                echo "Tools used here includes TestNG, Cucumber, Postman/Newman (for API testing)"
+            }
+        }
+        
+
+
+        stage("Deployment to Production"){
+            steps{
+                echo "Deploy application to target production envronment"
+                echo "Similar to deployment to staging, we use Docker + Kubernetes here for containerized applications. However, for Cloud enviropnment, we would use AWS CodeDeploy/Azure DevOps/Google Cloud Deploy"
+                
+        }
+    }
+}
+}
