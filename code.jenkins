@@ -54,6 +54,7 @@ pipeline {
             steps{
                 echo "Successfully checked that it's checked into GIT"
                 echo "making some changes - again!"
+                echo "Making some more changes!"
             }
         }
     }
