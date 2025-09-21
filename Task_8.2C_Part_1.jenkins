@@ -44,7 +44,7 @@ pipeline {
             steps {
                 // Display success messages
                 echo "Deploys the application to a pre-production environment and runs smoke tests to check that the deployment was successful"
-                echo "Tools used here includes Docket + kubernetes"
+                echo "Tools used here includes Docker + kubernetes"
             }
         }
         
@@ -61,8 +61,8 @@ pipeline {
             steps{
                 echo "Deploy application to target production envronment"
                 echo "Similar to deployment to staging, we use Docker + Kubernetes here for containerized applications. However, for Cloud enviropnment, we would use AWS CodeDeploy/Azure DevOps/Google Cloud Deploy"
-                echo "making changes to demonstrate CI/CD"
-                echo "demonstrating CI/CD"
+                // echo "making changes to demonstrate CI/CD"
+                // echo "demonstrating CI/CD"
         }
     }
 }
